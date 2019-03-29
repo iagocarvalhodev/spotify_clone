@@ -1,7 +1,6 @@
-import { injectGlobal } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
-injectGlobal`
-
+export const GlobalStyle=createGlobalStyle`
   *{
     margin: 0;
     padding: 0;
@@ -18,6 +17,6 @@ injectGlobal`
     -webkit-font-smoothing: antialiased !important;
     background: #181818;
     font-family: 'Montserrat', sans-serif;
+    color: #fff;
   }
-
-`
+`;
