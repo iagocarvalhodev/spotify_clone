@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Sidebar from './components/Sidebar';
 import { GlobalStyle } from './styles/global';
 
-const App=() => <div>
-  <GlobalStyle/>
-  <h1>Hello World</h1>
-</div>
+const App=() => (
+  <Fragment>
+    <GlobalStyle/>
+    <Sidebar/>
+  </Fragment>
+)
 
 export default App;
