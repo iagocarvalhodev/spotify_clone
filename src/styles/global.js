@@ -1,3 +1,4 @@
+import 'rc-slider/assets/index.css';
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle=createGlobalStyle`
