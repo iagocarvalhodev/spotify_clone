@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container=styled.div`
@@ -16,7 +17,7 @@ export const List=styled.div`
   display: flex;
 `;
 
-export const Playlist=styled.a`
+export const Playlist=styled(Link)`
   display: flex;
   flex-direction: column;
   margin-left: 20px;
