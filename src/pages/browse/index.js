@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Loading from '../../components/Loading';
 import { Creators as PlaylistsActions } from '../../store/ducks/playlists';
 import { Container, List, Playlist, Title } from './styled';
 
@@ -11,7 +12,7 @@ class Browser extends Component {
   render() {
     return (
       <Container>
-      <Title>Navegar</Title>
+        <Title>Navegar {this.props.playlists.loading && <Loading/>}</Title>
 
         <List>
           {this.props.playlists.data.map(playlist => (
