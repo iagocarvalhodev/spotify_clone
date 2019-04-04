@@ -1,5 +1,11 @@
 # spotify_clone
-Fazendo o clone do spotify com ReactJS, utilizando Redux, Redux-saga alem de outros componentes do reactjs
+Clone do Spotify feito totalmente no react utilizando:
+
+* REDUX
+* SAGA
+* STYLED COMPONENTS
+* REACT-ROUTER-DOM
+* REACTOTRON
 
 
 PARA RODAR EXCUTAR O
