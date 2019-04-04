@@ -1,36 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Creators as PlaylistsActions } from '../../store/ducks/playlists';
 import { Container, List, Playlist, Title } from './styled';
 
-const Browser=() => (
-  <Container>
-    <Title>Navegar</Title>
+class Browser extends Component {
+  componentDidMount() {
+    this.props.getPlaylistsRequest();
+  }
+  render() {
+    return (
+      <Container>
+      <Title>Navegar</Title>
 
-    <List>
-      <Playlist to="/playlists/1">
-        <img src="https://static3.tcdn.com.br/img/img_prod/224611/capital_inicial_via_brasil_27_04_18_americana_sp_16479_1_20180321180432.jpg" alt="Playlist" />
-        <strong>Melhores do Rock</strong>
-        <p>Relaxe enquanto você programa ouvindo apenas as melhores do rock mundial!</p>
-      </Playlist>
+        <List>
+          {this.props.playlists.data.map(playlist => (
+            <Playlist key={playlist.id} to={`playlists/${playlist.id}`}>
+              <img src={playlist.thumbnail} alt={playlist.title} />
+              <strong>{playlist.title}</strong>
+              <p>{playlist.description}</p>
+            </Playlist>
+          ))}
+      </List>
+    </Container>
+    )
+  }
+}
 
-      <Playlist to="/playlists/1">
-        <img src="https://static3.tcdn.com.br/img/img_prod/224611/capital_inicial_via_brasil_27_04_18_americana_sp_16479_1_20180321180432.jpg" alt="Playlist" />
-        <strong>Melhores do Rock</strong>
-        <p>Relaxe enquanto você programa ouvindo apenas as melhores do rock mundial!</p>
-      </Playlist>
+const mapStateToProps=state => ({
+  playlists: state.playlists,
+})
 
-      <Playlist to="/playlists/1">
-        <img src="https://static3.tcdn.com.br/img/img_prod/224611/capital_inicial_via_brasil_27_04_18_americana_sp_16479_1_20180321180432.jpg" alt="Playlist" />
-        <strong>Melhores do Rock</strong>
-        <p>Relaxe enquanto você programa ouvindo apenas as melhores do rock mundial!</p>
-      </Playlist>
+const mapDispatchToProps=dispatch => bindActionCreators(PlaylistsActions, dispatch);
 
-      <Playlist to="/playlists/1">
-        <img src="https://static3.tcdn.com.br/img/img_prod/224611/capital_inicial_via_brasil_27_04_18_americana_sp_16479_1_20180321180432.jpg" alt="Playlist" />
-        <strong>Melhores do Rock</strong>
-        <p>Relaxe enquanto você programa ouvindo apenas as melhores do rock mundial!</p>
-      </Playlist>
-    </List>
-  </Container>
-)
-
-export default Browser;
+export default connect(mapStateToProps, mapDispatchToProps)(Browser);
