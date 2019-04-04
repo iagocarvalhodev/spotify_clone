@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import AddPlaylistIcon from '../../assets/images/add_playlist.svg';
 import { Creators as PlaylistsActions } from '../../store/ducks/playlists';
+import Loading from '../Loading';
 // styles
 import { Container, Nav, NewPlaylist } from './styled';
 
@@ -69,7 +70,8 @@ class Sidebar extends Component {
   
         <Nav>
           <li>
-            <span>Playlists</span>
+              <span>Playlists</span>
+              {this.props.playlists.loading && <Loading/>}
           </li>
             {this.props.playlists.data.map(playlist => (
               <li key={playlist.id}>
